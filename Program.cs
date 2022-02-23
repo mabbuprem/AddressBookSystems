@@ -12,6 +12,7 @@ namespace AddressBookSystem
 
             AddContact();
             EditContact();
+            DeleteContact();
         }
 
         public static void AddContact()
@@ -21,7 +22,6 @@ namespace AddressBookSystem
             for (int i = 1; i <= num; i++)
             {
                 ContactDetails detail = new ContactDetails();
-                //ManipulateContact AddNewContact = new ManipulateContact();
                 manipulate.AddingContact(
                     detail.Name = Console.ReadLine(),
                     detail.Address = Console.ReadLine(),
@@ -31,17 +31,20 @@ namespace AddressBookSystem
                     detail.PhoneNumber = Console.ReadLine(),
                     detail.Email = Console.ReadLine()
                     );
-
             }
         }
 
         public static void EditContact()
         {
-            //ContactDetails detail = new ContactDetails();
-            //ManipulateContact EditNewContact = new ManipulateContact();
             Console.WriteLine("enter name you want edit");
             string Name = Console.ReadLine();
             manipulate.EditingContact(Name);
+        }
+        public static void DeleteContact()
+        {
+            Console.WriteLine("enter name you want delete");
+            string Name = Console.ReadLine();
+            manipulate.DeletingContact(Name);
         }
     }
 }
