@@ -9,7 +9,7 @@ namespace AddressBookSystem
     internal class ManipulateContact
     {
 
-        List<ContactDetails> AddressBookList = new List<ContactDetails>();
+        public List<ContactDetails> AddressBookList = new List<ContactDetails>();
 
         //Dictionary<string , ContactOptions> AddressBookList = new Dictionary<string, ContactOptions>();
         //Dictionary<string, ContactOptions> AddressBookList;
@@ -39,7 +39,6 @@ namespace AddressBookSystem
                     Email = Email
                 }
             );
-            Console.WriteLine($"{Name}'s contact is added______");
 
         }
 
@@ -48,7 +47,7 @@ namespace AddressBookSystem
         {
             foreach (var contact in AddressBookList)
             {
-                if (contact.GetName().Contains(Name))
+                if (contact.Name.Contains(Name))
                 {
                     /*Console.Write("plz provide new ");
                     contact.Address = Console.ReadLine();
@@ -59,10 +58,10 @@ namespace AddressBookSystem
                     Console.Write("plz provide new ");
                     contact.ZipCode = Console.ReadLine();*/
                     Console.Write("enter new phone number: ");
-                    contact.SetPhoneNumber(Console.ReadLine());
+                    contact.PhoneNumber = Console.ReadLine();
                     Console.Write("enter new email id: ");
-                    contact.SetEmail(Console.ReadLine());
-                    Console.Write($"{Name}'s Contact is edited______");
+                    contact.Email = Console.ReadLine();
+                    Console.WriteLine($"{Name}'s Contact is edited______");
                     break;
                 }
             }
@@ -72,11 +71,25 @@ namespace AddressBookSystem
         {
             foreach (var contact in AddressBookList)
             {
-                if (contact.GetName().Contains(Name))
+                if (contact.Name.Contains(Name))
                 {
                     AddressBookList.Remove(contact);
                     Console.WriteLine($"{Name}'s Contact is deleted______");
                     break;
+                }
+            }
+        }
+
+
+
+        public void SearchingInCity(string City)
+        {
+            Console.Write($"{City}: ");
+            foreach (var contact in AddressBookList)
+            {
+                if (contact.City.Contains(City))
+                {
+                    Console.Write($"{contact.Name}, ");
                 }
             }
         }
