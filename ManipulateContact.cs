@@ -8,7 +8,13 @@ namespace AddressBookSystem
 {
     internal class ManipulateContact
     {
+
         List<ContactDetails> AddressBookList = new List<ContactDetails>();
+
+        //Dictionary<string , ContactOptions> AddressBookList = new Dictionary<string, ContactOptions>();
+        //Dictionary<string, ContactOptions> AddressBookList;
+
+
         public void AddingContact
             (
             string Name,
@@ -20,6 +26,7 @@ namespace AddressBookSystem
             string Email
             )
         {
+
             AddressBookList.Add
                 (new ContactDetails()
                 {
@@ -33,6 +40,7 @@ namespace AddressBookSystem
                 }
             );
             Console.WriteLine($"{Name}'s contact is added______");
+
         }
 
 
@@ -40,21 +48,21 @@ namespace AddressBookSystem
         {
             foreach (var contact in AddressBookList)
             {
-                if (contact.Name.Contains(Name))
+                if (contact.GetName().Contains(Name))
                 {
-                    /*Console.WriteLine("plz provide new ");
+                    /*Console.Write("plz provide new ");
                     contact.Address = Console.ReadLine();
-                    Console.WriteLine("plz provide new ");
+                    Console.Write("plz provide new ");
                     contact.City = Console.ReadLine();
-                    Console.WriteLine("plz provide new ");
+                    Console.Write("plz provide new ");
                     contact.State = Console.ReadLine();
-                    Console.WriteLine("plz provide new ");
+                    Console.Write("plz provide new ");
                     contact.ZipCode = Console.ReadLine();*/
-                    Console.WriteLine("plz enter new phone number");
-                    contact.PhoneNumber = Console.ReadLine();
-                    Console.WriteLine("plz enter new email id");
-                    contact.Email = Console.ReadLine();
-                    Console.WriteLine($"{Name}'s Contact is edited______");
+                    Console.Write("enter new phone number: ");
+                    contact.SetPhoneNumber(Console.ReadLine());
+                    Console.Write("enter new email id: ");
+                    contact.SetEmail(Console.ReadLine());
+                    Console.Write($"{Name}'s Contact is edited______");
                     break;
                 }
             }
@@ -64,7 +72,7 @@ namespace AddressBookSystem
         {
             foreach (var contact in AddressBookList)
             {
-                if (contact.Name.Contains(Name))
+                if (contact.GetName().Contains(Name))
                 {
                     AddressBookList.Remove(contact);
                     Console.WriteLine($"{Name}'s Contact is deleted______");
@@ -72,20 +80,5 @@ namespace AddressBookSystem
                 }
             }
         }
-    }
-
-    internal class ContactDetails
-    {
-        public ContactDetails()
-        {
-        }
-
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
     }
 }
