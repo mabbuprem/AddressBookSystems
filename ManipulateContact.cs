@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -93,6 +92,28 @@ namespace AddressBookSystem
             }
             int Count = CityBookList.Count;
             Console.Write($"\ntotal people: {Count}\n ");
+        }
+
+
+
+
+        public void SortingAddressBook()
+        {
+            IComparer<ContactDetails> comparer = new SortingClass();
+            AddressBookList.Sort(comparer);
+        }
+    }
+
+
+
+
+
+    public class SortingClass : IComparer<ContactDetails>
+    {
+        int IComparer<ContactDetails>.Compare(ContactDetails x, ContactDetails y)
+        {
+            int NewName = x.Name.CompareTo(y.Name);
+            return NewName;
         }
     }
 }
